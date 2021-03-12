@@ -32,7 +32,7 @@ Globals:
     Timeout: 120
     Environment:
       Variables:
-        API_ENDPOINT: !If [ Prod, 'api-bug_report.pontte.com.br', !Sub 'ap-bug_report${Environment}.pontte.com.br' ]
+        API_ENDPOINT: !If [ Prod, 'api-bug-report.pontte.com.br', !Sub 'ap-bug-report${Environment}.pontte.com.br' ]
     Tags:
       Project: !Ref Project
       Environment: !Ref Environment
@@ -46,7 +46,7 @@ Resources:
     Type: "AWS::ApiGateway::DomainName"
     Properties:
       DomainName:
-        !If [ Prod, "api-bug_report.pontte.com.br", !Sub "api-bug_report{Environment}.pontte.com.br" ]
+        !If [ Prod, "api-bug-report.pontte.com.br", !Sub "api-bug-report{Environment}.pontte.com.br" ]
       CertificateArn: "arn:aws:acm:us-east-1:848638426587:certificate/639f5ab2-c77a-4f62-8250-c85716a6753f"
 
   # Acessos para log
@@ -82,7 +82,7 @@ Resources:
       BasePath: "BugReport"
       DomainName: !Ref APIDomainName
       RestApiId: !Ref BugReportApi
-      Stage: !Ref BugReportApi.StageName
+      Stage: !Ref Environment
 
   # DynamoDB table to store item: {id: &lt;ID&gt;, name: &lt;NAME&gt;}
   SampleTable:

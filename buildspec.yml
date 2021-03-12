@@ -8,9 +8,9 @@ phases:
     commands:
       # Use AWS SAM to package the application by using AWS CloudFormation
       - sam build
-      - sam package --s3-bucket $S3_BUCKET --output-template-file ./serverless-output.yaml
+      - sam package --s3-bucket $S3_BUCKET --output-template-file ./template-export.yml
 
 artifacts:
   type: zip
   files:
-    - serverless-output.yaml
+    - template-export.yml
