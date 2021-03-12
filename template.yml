@@ -21,10 +21,6 @@ Parameters:
       - staging
       - prod
 
-  StageName:
-    Description: nome do estagio na URL quando em producao
-    Type: String
-
 Conditions:
   Prod: !Equals [ !Ref Environment, prod ]
 
@@ -78,7 +74,7 @@ Resources:
     Type: AWS::Serverless::Api
     Properties:
       Name: !Sub "BugReportApi-${Environment}"
-      StageName: !If [ Prod, !Ref StageName, !Ref Environment ]
+      StageName: !Ref Environment
 
   BugReportApiMapping:
     Type: AWS::ApiGateway::BasePathMapping
