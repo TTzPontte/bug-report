@@ -1,0 +1,98 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
+Description: >-
+
+
+
+Parameters:
+  AppId:
+    Type: String
+
+  Project:
+    Description: nome do Project
+    Type: String
+    Default: Pontte
+
+  Environment:
+    Description: ambiente de execucao do servico
+    Type: String
+    AllowedValues:
+      - dev
+      - staging
+      - prod
+
+  APIDomainName:
+    Type: String
+
+Conditions:
+  Prod: !Equals [ !Ref Environment, prod ]
+
+# https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Runtime: python3.7
+    MemorySize: 1024
+    Timeout: 120
+    Environment:
+      Variables:
+        API_ENDPOINT: !If [ Prod, 'apibugs.pontte.com.br', !Sub 'bugs-api-${Environment}.pontte.com.br' ]
+    Tags:
+      Project: !Ref Project
+      Environment: !Ref Environment
+
+#  PermissionsBoundary: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:policy/${AppId}-${AWS::Region}-PermissionsBoundary'
+
+# Resources declares the AWS resources that you want to include in the stack
+# https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html
+Resources:
+  BugReportApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub "BugReportApi-${Environment}"
+      StageName: !Ref Environment
+
+  BugReportApiMapping:
+    Type: AWS::ApiGateway::BasePathMapping
+    Properties:
+      BasePath: "BugReport"
+      DomainName: !Ref APIDomainName
+      RestApiId: !Ref BugReportApi
+      Stage: !Ref Environment
+
+  GetAllFn:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      FunctionName: !Sub "ContractGetFn-${Ambiente}"
+      Description: Retorna um contrato.
+      CodeUri: ./GetAll
+      Handler: get_all.handler
+      Tracing: Active
+      Events:
+        api1:
+          Type: Api
+          Properties:
+            RestApiId: !Ref BugReportApi
+            Path: "/v1/"
+            Method: GET
+
+
+
+  # DynamoDB table to store item: {id: &lt;ID&gt;, name: &lt;NAME&gt;}
+  BugReportsDB:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "BugReports.${Environment}"
+      BillingMode: PAY_PER_REQUEST
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: !If [ Prod, true, false ]
+      SSESpecification:
+        SSEEnabled: true
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      Tags:
+        - { Key: Project, Value: !Ref Project }
+        - { Key: Environment, Value: !Ref Environment }
