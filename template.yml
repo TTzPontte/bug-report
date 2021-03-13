@@ -84,6 +84,23 @@ Resources:
       RestApiId: !Ref BugReportApi
       Stage: !Ref Environment
 
+  GetAllFn:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      FunctionName: !Sub "ContractGetFn-${Ambiente}"
+      Description: Retorna um contrato.
+      CodeUri: src/GetAll
+      Handler: get_all.handler
+      Tracing: Active
+      Events:
+        api1:
+          Type: Api
+          Properties:
+            RestApiId: !Ref BugReportApi
+            Path: "/v1/"
+            Method: GET
+
+
 
   # DynamoDB table to store item: {id: &lt;ID&gt;, name: &lt;NAME&gt;}
   BugReportsDB:
