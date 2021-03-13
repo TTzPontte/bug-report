@@ -62,10 +62,10 @@ Resources:
   GetAllFn:
     Type: "AWS::Serverless::Function"
     Properties:
-      FunctionName: !Sub "ContractGetFn-${Ambiente}"
+      FunctionName: !Sub "${Project}-GetAllFn-${Environment}"
       Description: Retorna um contrato.
-      CodeUri: ./GetAll
-      Handler: get_all.handler
+      CodeUri: ./get_all
+      Handler: GetAllFn.handler
       Tracing: Active
       Events:
         api1:

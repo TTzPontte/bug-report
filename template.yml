@@ -80,7 +80,7 @@ Resources:
   BugReportApp:
     Type: AWS::Serverless::Application
     Properties:
-      Location: src/bug-report-template.yml
+      Location: bug-report-template.yml
       Parameters:
         Project: !Ref Project
         Environment: !Ref Environment
