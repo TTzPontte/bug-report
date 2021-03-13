@@ -64,7 +64,7 @@ Resources:
     Properties:
       FunctionName: !Sub "${Project}-GetAllFn-${Environment}"
       Description: Retorna um contrato.
-      CodeUri: ./get_all
+      CodeUri: src/get_all
       Handler: GetAllFn.handler
       Tracing: Active
       Events:

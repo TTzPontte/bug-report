@@ -42,12 +42,12 @@ Globals:
 # Resources declares the AWS resources that you want to include in the stack
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html
 Resources:
-  Deployment:
-    Type: 'AWS::ApiGateway::Deployment'
-    Properties:
-      RestApiId: !Ref APIDomainName
-      Description: BugApi deployment
-      StageName: "v1"
+#  Deployment:
+#    Type: 'AWS::ApiGateway::Deployment'
+#    Properties:
+#      RestApiId: !Ref APIDomainName
+#      Description: BugApi deployment
+#      StageName: "v1"
 
   APIDomainName:
     Type: "AWS::ApiGateway::DomainName"
@@ -84,3 +84,5 @@ Resources:
       Parameters:
         Project: !Ref Project
         Environment: !Ref Environment
+        APIDomainName: !Ref APIDomainName
+        AppId: !Ref AppId
