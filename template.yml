@@ -42,12 +42,12 @@ Globals:
 # Resources declares the AWS resources that you want to include in the stack
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html
 Resources:
-#  Deployment:
-#    Type: 'AWS::ApiGateway::Deployment'
-#    Properties:
-#      RestApiId: !Ref APIDomainName
-#      Description: BugApi deployment
-#      StageName: "v1"
+    Deployment:
+      Type: 'AWS::ApiGateway::Deployment'
+      Properties:
+        RestApiId: !Ref AppId
+        Description: BugApi deployment
+        StageName: "v1"
 
   APIDomainName:
     Type: "AWS::ApiGateway::DomainName"
@@ -77,12 +77,55 @@ Resources:
       CloudWatchRoleArn: !GetAtt CloudWatchRole.Arn
 
 
-  BugReportApp:
-    Type: AWS::Serverless::Application
+  BugReportApi:
+    Type: AWS::Serverless::Api
     Properties:
-      Location: bug-report-template.yml
-      Parameters:
-        Project: !Ref Project
-        Environment: !Ref Environment
-        APIDomainName: !Ref APIDomainName
-        AppId: !Ref AppId
+      Name: !Sub "BugReportApi-${Environment}"
+      StageName: !Ref Environment
+
+  BugReportApiMapping:
+    Type: AWS::ApiGateway::BasePathMapping
+    Properties:
+      BasePath: "BugReport"
+      DomainName: !Ref APIDomainName
+      RestApiId: !Ref BugReportApi
+      Stage: !Ref Environment
+
+  GetAllFn:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      FunctionName: !Sub "${Project}-GetAllFn-${Environment}"
+      Description: Retorna um contrato.
+      CodeUri: src/get_all
+      Handler: GetAllFn.handler
+      Tracing: Active
+      Events:
+        api1:
+          Type: Api
+          Properties:
+            RestApiId: !Ref BugReportApi
+            Path: "/v1/"
+            Method: GET
+
+
+
+    # DynamoDB table to store item: {id: &lt;ID&gt;, name: &lt;NAME&gt;}
+  BugReportsDB:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "BugReports.${Environment}"
+      BillingMode: PAY_PER_REQUEST
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: !If [ Prod, true, false ]
+      SSESpecification:
+        SSEEnabled: true
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      Tags:
+        - { Key: Project, Value: !Ref Project }
+        - { Key: Environment, Value: !Ref Environment }
+
