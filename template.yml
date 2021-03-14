@@ -42,13 +42,6 @@ Globals:
 # Resources declares the AWS resources that you want to include in the stack
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html
 Resources:
-    Deployment:
-      Type: 'AWS::ApiGateway::Deployment'
-      Properties:
-        RestApiId: !Ref AppId
-        Description: BugApi deployment
-        StageName: "v1"
-
   APIDomainName:
     Type: "AWS::ApiGateway::DomainName"
     Properties:
@@ -83,6 +76,13 @@ Resources:
       Name: !Sub "BugReportApi-${Environment}"
       StageName: !Ref Environment
 
+  Deployment:
+    Type: 'AWS::ApiGateway::Deployment'
+    Properties:
+      RestApiId: !Ref BugReportApi
+      Description: BugApi deployment
+      StageName: "v1"
+
   BugReportApiMapping:
     Type: AWS::ApiGateway::BasePathMapping
     Properties:
@@ -110,6 +110,7 @@ Resources:
 
 
     # DynamoDB table to store item: {id: &lt;ID&gt;, name: &lt;NAME&gt;}
+
   BugReportsDB:
     Type: AWS::DynamoDB::Table
     Properties:
