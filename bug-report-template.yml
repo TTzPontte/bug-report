@@ -11,7 +11,7 @@ Parameters:
   Project:
     Description: nome do Project
     Type: String
-    Default: Pontte
+    Default: BugReport
 
   Environment:
     Description: ambiente de execucao do servico
@@ -35,7 +35,7 @@ Globals:
     Timeout: 120
     Environment:
       Variables:
-        API_ENDPOINT: !If [ Prod, 'apibugs.pontte.com.br', !Sub 'bugs-api-${Environment}.pontte.com.br' ]
+        Environment: !Ref Environment
     Tags:
       Project: !Ref Project
       Environment: !Ref Environment
