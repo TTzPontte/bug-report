@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/code/alfred_app/alfred_app-back_end/.idea/alfred_app-back_end.iml" filepath="$USER_HOME$/code/alfred_app/alfred_app-back_end/.idea/alfred_app-back_end.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/bug-report.iml" filepath="$PROJECT_DIR$/.idea/bug-report.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Portal/portal-backend/.idea/portal-backend.iml" filepath="$PROJECT_DIR$/../Portal/portal-backend/.idea/portal-backend.iml" />
     </modules>
   </component>
 </project>

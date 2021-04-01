@@ -20,7 +20,7 @@ exports.getByIdHandler = async (event) => {
     // https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-logging.html
     console.log('received:', JSON.stringify(event));
 
-    // Get id from pathParameters from APIGateway because of `/{id}` at template.yml
+    // Get id from pathParameters from APIGateway because of `/{id}` at contacts_template.yml
     const { id } = pathParameters;
 
     // Get the item from the table

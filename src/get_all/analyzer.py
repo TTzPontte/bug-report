@@ -80,8 +80,8 @@ class BugReport:
     def by_location(self):
         locations = {}
         obj = dict()
-        for i in self.records:
-            fields = i.get('fields')
+        for record in self.records:
+            fields = record.get('fields')
             print(f"fields :: {fields}")
 
             # for field in fields:
@@ -102,38 +102,9 @@ def handler(data):
     BugReport(bug_reports)
 
 
-str_data = {
-    "records": [
-        {
-            "id": "rec0rH0qMm7diK8Ls",
-            "fields": {
-                "Anexos": [
-                    {
-                        "id": "att8N0znSg6GJtp3S",
-                        "url": "https://dl.airtable.com/.attachments/4a708424cdab64ff7249fa616284fffb/08dc574e/flYo4CmzTzmXQ_n4yk0ZrQ",
-                        "filename": "flYo4CmzTzmXQ_n4yk0ZrQ",
-                        "size": 1464,
-                        "type": "text/html"
-                    }
-                ],
-                "Local": [
-                    "Torre de controle - HE"
-                ],
-                "Nome do Bug": "Tagear operação",
-                "Reportado por": [
-                    "recWzW16YZt3LY9Xx"
-                ],
-                "Descrição": "Tagear a operação: https://torrecontrole.pontte.com.br/contracts/flYo4CmzTzmXQ_n4yk0ZrQ como \u0027\u0027best\u0027\u0027",
-                "Opened date \u0026 time (GMT)": "2021-02-11T16:50:29.000Z",
-                "Data de abertura": "02-11-21",
-                "Dias em aberto": 21
-            },
-            "createdTime": "2021-02-11T16:50:29.000Z"
-        },
-    ]
-}
-
-records = str_data["records"]
+# %%
+# records = str_data["records"]
+records = []
 # b_report = handler(data)
 # reports = BugReport(records)
 
