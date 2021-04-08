@@ -56,8 +56,28 @@ class Report:
 class BugReport:
     records: list
 
-    def total_reports(self):
+    def total_reports(self) -> int:
         return len(self.records)
+
+    def by_location(self):
+        locations_return = {}
+        obj = dict()
+        existing_array = []
+        for record in self.records:
+            print(f'existing_array: {existing_array}')
+            fields = record.get('fields')
+            # for field in fields:
+            locations = fields['Local']
+            pp.pprint(locations)
+            for location in locations:
+                if existing_array.__contains__(location):
+                    ll = locations_return[location]
+                    locations_return[location] = ll.extend(fields['id'])
+                else:
+                    locations_return[location] = record
+                    existing_array.extend(location)
+        return locations_return
+
 
     def teams(self):
         records_list = self.records
@@ -76,25 +96,6 @@ class BugReport:
                 no_squad.append(record)
 
         return {"Ameno": ameno, "Dorime": dorime, "noSquad": no_squad}
-
-    def by_location(self):
-        locations = {}
-        obj = dict()
-        for record in self.records:
-            fields = record.get('fields')
-            print(f"fields :: {fields}")
-
-            # for field in fields:
-            location = fields['Local']
-            print(f"location :: {location}")
-
-            existing_array = []
-            if existing_array.__contains__(location):
-                ll = locations[location]
-                locations[location] = ll.extend(fields['id'])
-            else:
-                existing_array.extend(location)
-        return obj
 
 
 def handler(data):

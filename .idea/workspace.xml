@@ -4,13 +4,14 @@
     <list default="true" id="57cd869f-67a2-46bf-8328-3d1e802982c3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../Portal/portal-backend/layers/common/python/common/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Portal/portal-backend/layers/common/python/common/helper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Portal/portal-backend/src/registration/dao_contract.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Portal/portal-backend/src/registration/dao_contract.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/bug-report.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bug-report.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildspec.yml" beforeDir="false" afterPath="$PROJECT_DIR$/buildspec.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/get_all/GetAllFn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/get_all/GetAllFn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/Helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/common/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/Helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/common/Helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/get_all/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/get_all/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handlers/get-by-id.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/handlers/get-by-id.js" afterDir="false" />
-      <change beforePath="$USER_HOME$/code/alfred_app/alfred_app-back_end/src/contacts/get_all.py" beforeDir="false" afterPath="$USER_HOME$/code/alfred_app/alfred_app-back_end/src/contacts/get_all.py" afterDir="false" />
+      <change beforePath="$USER_HOME$/code/alfred_app/alfred_app-back_end/template.yml" beforeDir="false" afterPath="$USER_HOME$/code/alfred_app/alfred_app-back_end/template.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +40,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$USER_HOME$/code/alfred_app/alfred_app-back_end" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -61,20 +62,22 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/code/alfred_app/alfred_app-back_end" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="aws" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$USER_HOME$/code/alfred_app/alfred_app-back_end" />
+      <recent name="$USER_HOME$/code/alfred_app/alfred_app-back_end/templates" />
+      <recent name="$PROJECT_DIR$/src/Users" />
+      <recent name="$PROJECT_DIR$/src/get_all" />
       <recent name="$USER_HOME$/code/alfred_app/alfred_app-back_end/src/contacts-service" />
-      <recent name="$USER_HOME$/code/alfred_app/alfred_app-back_end/src/common" />
-      <recent name="$USER_HOME$/code/alfred_app/alfred_app-back_end/src" />
-      <recent name="$PROJECT_DIR$/src/common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$USER_HOME$/code/alfred_app/alfred_app-back_end" />
-      <recent name="$USER_HOME$/code/alfred_app/alfred_app-back_end/src" />
+      <recent name="$APPLICATION_CONFIG_DIR$/scratches/alfred_app-back_end" />
+      <recent name="$APPLICATION_CONFIG_DIR$/scratches/templates" />
       <recent name="$APPLICATION_CONFIG_DIR$/scratches" />
-      <recent name="$USER_HOME$/code/alfred_app/alfred_app-back_end/src/common" />
+      <recent name="$USER_HOME$/code/alfred_app/alfred_app-back_end" />
+      <recent name="$USER_HOME$/code/alfred_app/alfred_app-back_end/templates" />
     </key>
   </component>
   <component name="RunManager">
@@ -110,7 +113,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617108402255</updated>
       <workItem from="1617108408953" duration="11500000" />
-      <workItem from="1617280240356" duration="1809000" />
+      <workItem from="1617280240356" duration="20984000" />
     </task>
     <servers />
   </component>
