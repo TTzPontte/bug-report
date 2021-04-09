@@ -9,17 +9,17 @@ ssm_client = boto3.client('ssm')
 API_KEY = ssm_client.get_parameter(
     Name=f'/airtable/{ENV}/bug_api_key'
 )
+
 base_url = 'https://api.airtable.com/v0'
 
 base_id = 'appyxraZ9ECUTtWRI'
-
 
 def helper_get_all(table_name):
     response = requests.get(
         url=f'{base_url}/{base_id}/{table_name}?api_key={API_KEY}'
     )
+    
     return response.json()
-
 
 # def get_table():
 def get_table(table):

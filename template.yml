@@ -95,7 +95,7 @@ Resources:
     Type: "AWS::Serverless::Function"
     Properties:
       FunctionName: !Sub "${Project}-GetAllFn-${Environment}"
-      Description: Retorna um contrato.
+      Description: Retorna uma lista de bugs.
       CodeUri: src/get_all
       Handler: GetAllFn.handler
       Tracing: Active
