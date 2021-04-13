@@ -4,7 +4,7 @@ phases:
     commands:
       # Install all dependencies (including dependencies for running tests)
       - pip3 install awscli aws-sam-cli --upgrade
-      - pip install -r requirements.txt -t .
+      - pip install -r ./scr/requirements.txt -t .
   build:
     commands:
       # Use AWS SAM to package the application by using AWS CloudFormation
