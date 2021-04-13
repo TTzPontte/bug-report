@@ -3,7 +3,8 @@ import requests
 import boto3
 import os
 
-ENV = os.getenv("ENV") or 'dev'
+#ENV = os.getenv("ENV") or 'dev'
+ENV = 'dev'
 
 ssm_client = boto3.client('ssm')
 
@@ -15,14 +16,19 @@ def helper_get_all_bugs():
     response = requests.get(
         url=f'https://api.airtable.com/v0/appyxraZ9ECUTtWRI/{table_name}?api_key={API_KEY}'
     )
-
+    
     return response.json()
 
 # %%
+'''
 class GetAll(event, context):
     def handler(self):
         return helper_get_all_bugs()
+'''
 
 
 def handler(event, context):
-    GetAll(event, context).run()
+    #GetAll(event, context).run()
+    res = helper_get_all_bugs()
+    
+    return { 'status': res } 

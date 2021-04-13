@@ -1,4 +1,8 @@
 node_modules
 
 ./idea
-./.aws-sam
+.aws-sam
+.aws-sam/
+.aws-sam/*
+
+out.txt

@@ -106,6 +106,9 @@ Resources:
             RestApiId: !Ref BugReportApi
             Path: "/v1/"
             Method: GET
+      Policies:
+        - SSMParameterReadPolicy:
+            ParameterName: !Sub "airtable/${Environment}/bug_api_key"
 
 
 
