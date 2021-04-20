@@ -105,8 +105,8 @@ Resources:
   CreateFn:
     Type: "AWS::Serverless::Function"
     Properties:
-      FunctionName: !Sub "${Project}-GetAllFn-${Environment}"
-      Description: Retorna uma lista de bugs.
+      FunctionName: !Sub "${Project}-CreateFn-${Environment}"
+      Description: Criar um bug.
       CodeUri: src/create
       Handler: CreateFn.handler
       Tracing: Active
