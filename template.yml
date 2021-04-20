@@ -82,25 +82,6 @@ Resources:
       RestApiId: !Ref BugReportApi
       Stage: !Ref Environment
 
-  GetAllBugsFn:
-    Type: "AWS::Serverless::Function"
-    Properties:
-      FunctionName: !Sub "${Project}-GetAllBugsFn-${Environment}"
-      Description: Retorna uma lista de bugs.
-      CodeUri: src/get_all
-      Handler: GetAllFn.handler
-      Tracing: Active
-      Events:
-        api1:
-          Type: Api
-          Properties:
-            RestApiId: !Ref BugReportApi
-            Path: "/v1/"
-            Method: GET
-      Policies:
-        - SSMParameterReadPolicy:
-            ParameterName: !Sub "airtable/${Environment}/bug_api_key"
-
   CreateBugFn:
     Type: "AWS::Serverless::Function"
     Properties:
@@ -116,9 +97,6 @@ Resources:
             RestApiId: !Ref BugReportApi
             Path: "/v1/create"
             Method: POST
-      Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref BugReportsDB
 
   BugReportsDB:
     Type: AWS::DynamoDB::Table
