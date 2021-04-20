@@ -27,7 +27,6 @@ Globals:
     Runtime: python3.7
     MemorySize: 1024
     Timeout: 120
-    PermissionsBoundary: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:policy/${AppId}-${AWS::Region}-PermissionsBoundary'
     Environment:
       Variables:
         API_ENDPOINT: !If [ Prod, 'apibugs.pontte.com.br', !Sub 'apibugs${Environment}.pontte.com.br' ]
@@ -83,10 +82,10 @@ Resources:
       RestApiId: !Ref BugReportApi
       Stage: !Ref Environment
 
-  GetAllFn:
+  GetAllBugsFn:
     Type: "AWS::Serverless::Function"
     Properties:
-      FunctionName: !Sub "${Project}-GetAllFn-${Environment}"
+      FunctionName: !Sub "${Project}-GetAllBugsFn-${Environment}"
       Description: Retorna uma lista de bugs.
       CodeUri: src/get_all
       Handler: GetAllFn.handler
@@ -102,10 +101,10 @@ Resources:
         - SSMParameterReadPolicy:
             ParameterName: !Sub "airtable/${Environment}/bug_api_key"
 
-  CreateFn:
+  CreateBugFn:
     Type: "AWS::Serverless::Function"
     Properties:
-      FunctionName: !Sub "${Project}-CreateFn-${Environment}"
+      FunctionName: !Sub "${Project}-CreateBugFn-${Environment}"
       Description: Criar um bug.
       CodeUri: src/create
       Handler: CreateFn.handler
