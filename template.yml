@@ -27,6 +27,7 @@ Globals:
     Runtime: python3.7
     MemorySize: 1024
     Timeout: 120
+    PermissionsBoundary: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:policy/${AppId}-${AWS::Region}-PermissionsBoundary'
     Environment:
       Variables:
         API_ENDPOINT: !If [ Prod, 'apibugs.pontte.com.br', !Sub 'apibugs${Environment}.pontte.com.br' ]
