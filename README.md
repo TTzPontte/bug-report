@@ -8,15 +8,22 @@ This project is a serverless Lambda application.
 info.    
 `secondary` purpose is to analyse incoming reports database, and help point out statistical progress evaluations Current
 
+
 ### Structure
+
+
+![Schema Dyagram](Db_dyagram.png)
+
 
 > __Set Environments__  
 > we have 2 initiated environments with conected `CodeStar` and `CodePipeline`
 > - prod
->  - Production _ENV_
+    >
+- Production _ENV_
 
 > - beta
->  - tenting _ENV_
+    >
+- tenting _ENV_
 
 > __Files and folders:__
 > - src - Code for the application's Lambda function.
