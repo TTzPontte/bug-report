@@ -3,6 +3,8 @@ import requests
 import boto3
 import os
 
+from helper.translate import Translate
+
 ENV = os.getenv("ENV") or 'dev'
 
 ssm_client = boto3.client('ssm')
@@ -17,8 +19,12 @@ def helper_get_all_bugs():
     response = requests.get(
         url=f'https://api.airtable.com/v0/appyxraZ9ECUTtWRI/{table_name}?api_key={API_KEY.get("Parameter").get("Value")}'
     )
+
+    translate = Translate()
     
-    return response.json()
+    formatted_data = translate.change_keys(response.json())
+
+    return formatted_data
 
 # %%
 '''
