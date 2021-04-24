@@ -1,0 +1,8 @@
+decimal
+http
+json
+logging
+dataclasses
+aws_xray_sdk
+requests
+boto3

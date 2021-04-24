@@ -27,6 +27,8 @@ Globals:
     Runtime: python3.7
     MemorySize: 1024
     Timeout: 120
+    Layers:
+      - !Ref CommonLayer
     Environment:
       Variables:
         API_ENDPOINT: !If [ Prod, 'apibugs.pontte.com.br', !Sub 'apibugs${Environment}.pontte.com.br' ]
@@ -81,6 +83,14 @@ Resources:
       DomainName: !Ref APIDomainName
       RestApiId: !Ref BugReportApi
       Stage: !Ref Environment
+
+  CommonLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      Description: bibliotecas comuns para as funcoes.
+      ContentUri: layers/common
+      CompatibleRuntimes:
+        - python3.7
 
   GetAllBugsFn:
     Type: "AWS::Serverless::Function"
