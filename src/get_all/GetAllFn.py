@@ -2,8 +2,9 @@
 import requests
 import boto3
 import os
+from common.
 
-from helper.translate import Translate
+from layers.common.helper.translate import Translate
 
 ENV = os.getenv("ENV") or 'dev'
 

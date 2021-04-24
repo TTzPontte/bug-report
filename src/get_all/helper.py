@@ -4,16 +4,17 @@ pp = pprint.PrettyPrinter(indent=4)
 
 WORDS = {
     "Anexos": "files",
+    "Data de abertura": "createdAt",
+    "Descrição": "description",
+    "Dias em aberto": "daysOpened",
     "Local": "location",
     "Nome do Bug": "title",
-    "Reportado por": "requestedBy",
-    "Descrição": "desciption",
-    "Opened date & time (GMT)": "timestamp",
-    "Data de abertura": "createdAt",
-    "Dias em aberto": "daysOpened",
-    "Tipo": "type",
+    "Opened date & time (GMT)": "timeStamp",
     "Prioridade": "priority",
+    "Reportado por": "requestedBy",
+    "Tipo": "type",
 }
+
 
 def change_keys(obj, convert):
     """
@@ -32,4 +33,20 @@ def change_keys(obj, convert):
         new = obj.__class__(change_keys(v, convert) for v in obj)
     else:
         return obj
+
     return new
+
+
+# %%
+item = {'id': 'rec0rH0qMm7diK8Ls', 'fields': {'Anexos': [{'id': 'att8N0znSg6GJtp3S',
+                                                          'url': 'https://dl.airtable.com/.attachments/4a708424cdab64ff7249fa616284fffb/08dc574e/flYo4CmzTzmXQ_n4yk0ZrQ',
+                                                          'filename': 'flYo4CmzTzmXQ_n4yk0ZrQ', 'size': 1464,
+                                                          'type': 'text/html'}], 'Tipo': 'Feature',
+                                              'Local': ['Torre de controle - HE'], 'Nome do Bug': 'Tagear operação',
+                                              'Reportado por': ['recWzW16YZt3LY9Xx'],
+                                              'Descrição': "Tagear a operação: https://torrecontrole.pontte.com.br/contracts/flYo4CmzTzmXQ_n4yk0ZrQ como ''best''",
+                                              'Prioridade': 'Média',
+                                              'Opened date & time (GMT)': '2021-02-11T16:50:29.000Z',
+                                              'Data de abertura': '02-11-21', 'Dias em aberto': 72},
+        'createdTime': '2021-02-11T16:50:29.000Z'}
+ppp = change_keys(item, WORDS)

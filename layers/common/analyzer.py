@@ -8,7 +8,7 @@ WORDS = {
     "Local": "location",
     "Nome do Bug": "title",
     "Reportado por": "requested_by",
-    "Descrição": "desciption",
+    "Descrição": "description",
     "Data de abertura": "created_at",
     "Dias em aberto": "days_opened",
 }
